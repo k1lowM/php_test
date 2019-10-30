@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  main:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: php7_apache
+    container_name: php70-apache    # docker run --name
+    ports:                          # docker run -p
+      - 127.0.0.1:80:80
+    volumes:
+      - ./html:/var/www/html        # docker run -v

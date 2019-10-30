@@ -1,5 +1,19 @@
+﻿イメージビルド
+docker build ./ -t php7_apache
+
+composeでイメージビルド
+docker-compose build
+
+composeでコンテナ起動
+docker-compose up -d
+
 コンテナ起動
-docker run -d -p 80:80 -v C:\Users\makiu\development\docker-php:/var/www/html --name php70-apache php:7.0-apache
+docker run -d -p 80:80 -v $PWD/html:/var/www/html --name php70-apache php7_apache
+「-d」は、バックグラウンドで実行するオプションです。
+「-p」は、ポートの設定で、ホスト側:ゲスト（コンテナ）側で指定します。
+「-v」は、volumeの指定で、マウントしたいディレクトリを、ホスト側のパス:ゲスト側のパスで指定します。
+「–name」は、コンテナに「php7-apache」という名前を指定しています。（名前を指定していないと自動的に付けられます。）
+最後の「php7_apache」で先程ビルドしたイメージ名（リポジトリ名）を指定します。
 
 起動の確認
 docker container ls
@@ -9,6 +23,9 @@ docker container exec -ti php70-apache bash
 
 コンテナを停止
 docker container stop php70-apache
+
+composeでコンテナ停止
+docker-compose stop
 
 コンテナを削除
 docker container rm php70-apache
