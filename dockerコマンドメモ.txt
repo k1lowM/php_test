@@ -18,6 +18,9 @@ docker run -d -p 80:80 -v $PWD/html:/var/www/html --name php70-apache php7_apach
 起動の確認
 docker container ls
 
+コンテナの一覧を表示
+docker-compose ps
+
 コンテナにログイン
 docker container exec -ti php70-apache bash
 
